@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+
+.btn-orange{
+    background:#FF735C;
+    border: 1px #a04b3e solid;
+}
+
+// .btn-orange:active{
+//     background:#a35549;
+//     border: 1px #a04b3e solid;
+// }
+
+// .btn-orange:hover{
+//     background:#a35549;
+//     border: 1px #a04b3e solid;
+// }
