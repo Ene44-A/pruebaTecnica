@@ -100,7 +100,8 @@
                 <div class="row">
                     <div class="col-md-6 gx-5 mb-4">
                         <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
-                            <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" />
+                            {{-- <img src="https://mdbootstrap.com/img/new/slides/031.jpg" class="img-fluid" /> --}}
+                            <img src="{{ asset('assets/home.jpg') }}" width="510" alt="">
                             <a href="#!">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
@@ -113,6 +114,18 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
                             eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
                             sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, totam. Aliquam, illo velit
+                            quod amet aliquid a! Eum eaque odit fuga aliquid itaque provident omnis explicabo quibusdam,
+                            culpa voluptate. Omnis.
+                        </p>
+                        <h4><strong>data 1</strong></h4>
+                        <p class="text-muted">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
+                            eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
+                            sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam, totam. Aliquam, illo velit
+                            quod amet aliquid a! Eum eaque odit fuga aliquid itaque provident omnis explicabo quibusdam,
+                            culpa voluptate. Omnis.
                         </p>
                         <p><strong>data 2</strong></p>
                         <p class="text-muted">
