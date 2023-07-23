@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('color');
             $table->string('alias')->unique();
             $table->string('status');
             $table->string('leader_user');

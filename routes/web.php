@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//trae los datos de los proyectos guardados
+Route::get('/home',[ProjectsController::class, 'index'])->name('projects');
 
-Route::get('/project', [App\Http\Controllers\HomeController::class, 'project'])->name('project');
-// Route::get('/project', function(){
-//     return view('admin/project');
-// });
+
+Route::get('/project', [App\Http\Controllers\HomeController::class, 'project'])->name('projects');
+// enviar datos a la db
+Route::post('/project', [ProjectsController::class, 'store'])->name('projects');
+
+
+
+//metodo para editar el proyecto
+Route::get('/project/{id}', [ProjectsController::class, 'show'])->name('projects-show');
+
+Route::patch('/project/{id}', [ProjectsController::class, 'update'])->name('projects-update');
+//ruta al metodo para eliminar
+Route::delete('/project/{id}', [ProjectsController::class, 'destroy'])->name('projects-destroy');

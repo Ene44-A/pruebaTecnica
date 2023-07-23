@@ -320,14 +320,14 @@ return [
         // ],
         // ['header' => 'account_settings'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Inicio',
+            'url'  => 'home',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
-            'text' => 'Proyecto',
+            'text' => 'Crear Proyecto',
             'url'  => 'project',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-clipboard',
         ],
         [
             'text' => 'change_password',

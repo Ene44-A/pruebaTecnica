@@ -1,10 +1,10 @@
 @extends('adminlte::page')
-
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 @section('content')
     <div class="p-3">
 
         <div class="card">
-            <div class="card-header">{{ __('Dashboard') }}</div>
+            <div class="card-header">{{ __('Home') }}</div>
 
             <div class="card-body">
                 @if (session('status'))
@@ -12,59 +12,64 @@
                         {{ session('status') }}
                     </div>
                 @endif
-                <div class="container">
-                    <form>
-                        <label for="Titulo" class="form-label">Titulo</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titulo">
-                        <div class="input-group">
-                            <div class="col-md-2">
-                                <label for="exampleColorInput" class="form-label">Color</label>
+                @if (count($projects) > 0)
+                    @foreach ($projects as $project)
+                        <div class="card m-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <h4>
+                                            <span class="badge"style="background:{{ $project->color }} ;">#</span>
+                                            <strong>Proyecto: </strong> {{ $project->name }}
+                                        </h4>
+                                        <br>
+                                        <p class="blockquote-footer">{{ $project->alias }}</p>
+                                        <p class="">{{ $project->leader_user }}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="text-right">{{ $project->status }}</p>
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Inicio</span>
+                                        <input type="text" class="form-control" readonly
+                                            value="{{ $project->initial_date }}" aria-label="Username">
+                                        <span class="input-group-text">Final</span>
+                                        <input type="text" class="form-control" readonly
+                                            value="{{ $project->final_date }}" aria-label="Server">
+                                    </div>
+                                    <p>{{ $project->description }}</p>
+                                </div>
                             </div>
-                            <label for="Titulo" class="form-label">Titulo</label>
-                        </div>
-                        <div class="input-group">
-                            <div class="col-md-2">
-                                <input type="color" class="form-control form-control-color" id="exampleColorInput"
-                                    value="#563d7c" title="color">
+                            <div class="card-body">
+                                <div class="row py-1">
+                                    <div class="col-md-9 d-flex aling-items-center">
+                                        <a href="{{ route('projects-show', ['id' => $project->id]) }}">Editar</a>
+                                    </div>
+                                    <div class="col-md-3 d-flex justify-content-end">
+                                        <form action="{{ route('projects-destroy', ['id' => $project->id]) }}"
+                                            method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titulo">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ $project->name }}</li>
+                            </ul>
                         </div>
-                        <div class="mb-4">
-                            <label for="exampleFormControlTextarea1" class="form-label">Información</label>
-                            <textarea class="form-control" style="max-height: 300px;" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    @endforeach
+                @else
+                    <div class="container">
+                        <div class="row">
+                            <div class="col d-flex justify-content-center">
+                                <h1>No hay proyectos para mostrar.</h1>
+                                <img src="{{ asset('assets/home.jpg') }}" width="510" alt="">
+                            </div>
                         </div>
-                        <label for="exampleFormControlTextarea1" class="form-label">Pilar de proyecto</label>
-                        <div class="input-group">
-                            <span class="input-group-text">Lider de proyecto</span>
-                            {{-- <input type="text" aria-label="First name" class="form-control"> --}}
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Seleccionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            {{-- <input type="text" aria-label="Last name" class="form-control"> --}}
-                            <span class="input-group-text">Estado del proyecto</span>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Seleccionar</option>
-                                <option value="pendiente">Pendiente</option>
-                                <option value="en_proceso">En Proceso</option>
-                                <option value="finalizada">Finalizada</option>
-                            </select>
-                        </div>
-                        <label for="exampleFormControlTextarea1" class="form-label">Fechas del proyecto</label>
-                        <div class="input-group">
-                            <span class="input-group-text">Tiempo del proyecto</span>
-                            <input type="date" aria-label="First name" class="form-control">
-                            <input type="date" aria-label="Last name" class="form-control">
-                        </div>
-                        <div id="emailHelp" class="form-text">Por favor verificar todos los datos correctamentes</div>
-                        <div class="col-12 mt-2">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
 
