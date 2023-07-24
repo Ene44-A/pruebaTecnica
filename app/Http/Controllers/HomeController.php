@@ -11,6 +11,8 @@ class HomeController extends Controller
      *
      * @return void
      */
+
+    //  autentificacipion y matado de sesion
     public function __construct()
     {
         $this->middleware('auth');

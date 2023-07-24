@@ -13,7 +13,7 @@
                     </div>
                 @endif
                 @if (count($projects) > 0)
-                    @foreach ($projects as $project)
+                    @foreach ($projects->sortByDesc('created_at') as $project)
                         <div class="card m-3">
                             <div class="card-header">
                                 <div class="row">
@@ -40,21 +40,23 @@
                                     <p>{{ $project->description }}</p>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="row py-1">
-                                    <div class="col-md-9 d-flex aling-items-center">
-                                        <a href="{{ route('projects-show', ['id' => $project->id]) }}">Editar</a>
-                                    </div>
-                                    <div class="col-md-3 d-flex justify-content-end">
-                                        <form action="{{ route('projects-destroy', ['id' => $project->id]) }}"
-                                            method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="btn btn-danger btn-sm">Eliminar</button>
-                                        </form>
+                            @role('admin')
+                                <div class="card-body">
+                                    <div class="row py-1">
+                                        <div class="col-md-9 d-flex aling-items-center">
+                                            <a href="{{ route('projects-show', ['id' => $project->id]) }}">Editar</a>
+                                        </div>
+                                        <div class="col-md-3 d-flex justify-content-end">
+                                            <form action="{{ route('projects-destroy', ['id' => $project->id]) }}"
+                                                method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="btn btn-danger btn-sm">Eliminar</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endrole
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">{{ $project->name }}</li>
                             </ul>
@@ -65,7 +67,7 @@
                         <div class="row">
                             <div class="col d-flex justify-content-center">
                                 <h1>No hay proyectos para mostrar.</h1>
-                                <img src="{{ asset('assets/home.jpg') }}" width="510" alt="">
+                                <img src="{{ asset('assets/task.jpg') }}" width="510" alt="">
                             </div>
                         </div>
                     </div>

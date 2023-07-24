@@ -325,14 +325,20 @@ return [
             'icon' => 'fas fa-fw fa-home',
         ],
         [
+            'text' => 'Tareas',
+            'url'  => 'task',
+            'icon' => 'fas fa-fw fa-book',
+        ],
+        ['header' => 'Admin'],
+        [
             'text' => 'Crear Proyecto',
             'url'  => 'project',
             'icon' => 'fas fa-fw fa-clipboard',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Usuarios',
+            'url'  => 'users',
+            'icon' => 'fas fa-fw fa-users',
         ],
         // [
         //     'text'    => 'multilevel',
