@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProjectTaskController;
 use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +45,13 @@ Route::get('/project/{id}', [ProjectsController::class, 'show'])->name('projects
 Route::patch('/project/{id}', [ProjectsController::class, 'update'])->name('projects-update');
 //ruta al metodo para eliminar
 Route::delete('/project/{id}', [ProjectsController::class, 'destroy'])->name('projects-destroy');
-
 //vista de usuarios
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+
+//añadir y mirar comentarios
+Route::get('/projects/{project}/show-task', [ProjectTaskController::class, 'showTask'])->name('show-task');
+Route::get('/projects/{project}/create-task', [ProjectTaskController::class, 'createTask'])->name('create-task');
+Route::post('/projects/{id}/store-task', [ProjectTaskController::class, 'storeTask'])->name('store-task');
+
+
 

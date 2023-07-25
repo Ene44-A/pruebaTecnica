@@ -80,7 +80,7 @@ class ProjectsController extends Controller
         $project->save();
 
         // return view('home', ['success'=>'Proyecto actualizado']);
-        return redirect()->route('projects')->with('success', 'Proyecto actualizado');
+        return redirect()->route('home')->with('success', 'Proyecto actualizado');
     }
 
     public function destroy($id){
@@ -89,4 +89,6 @@ class ProjectsController extends Controller
 
         return redirect()->route('projects')->with('success', 'Proyecto eliminado');
     }
+
+
 }

@@ -40,23 +40,28 @@
                                     <p>{{ $project->description }}</p>
                                 </div>
                             </div>
-                            @role('admin')
-                                <div class="card-body">
-                                    <div class="row py-1">
-                                        <div class="col-md-9 d-flex aling-items-center">
-                                            <a href="{{ route('projects-show', ['id' => $project->id]) }}">Editar</a>
-                                        </div>
-                                        <div class="col-md-3 d-flex justify-content-end">
-                                            <form action="{{ route('projects-destroy', ['id' => $project->id]) }}"
-                                                method="POST">
+                            <div class="card-body">
+                                <div class="row py-1">
+                                    <div class="col-md-9">
+                                        <a href="{{ route('show-task', $project->id) }} "class="btn btn-primary">Ver
+                                            tareas</a>
+                                    </div>
+                                    @role('Admin')
+                                    <div class="col-md-3 d-flex justify-content-end">
+                                        {{-- @role('admin') --}}
+                                        <form action="{{ route('projects-destroy', ['id' => $project->id]) }}"
+                                            method="POST">
+                                            <a href="{{ route('projects-show', ['id' => $project->id]) }}"
+                                                class="btn btn-info" role="button">Editar</a>
                                                 @method('DELETE')
                                                 @csrf
-                                                <button class="btn btn-danger btn-sm">Eliminar</button>
+                                                <button class="btn btn-danger">Eliminar</button>
                                             </form>
-                                        </div>
+                                            {{-- @endrole --}}
                                     </div>
+                                    @endrole
                                 </div>
-                            @endrole
+                            </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">{{ $project->name }}</li>
                             </ul>
@@ -68,6 +73,7 @@
                             <div class="col d-flex justify-content-center">
                                 <h1>No hay proyectos para mostrar.</h1>
                                 <img src="{{ asset('assets/task.jpg') }}" width="510" alt="">
+                                {{-- https://www.freepik.es/vector-gratis/aceptar-ilustracion-concepto-tareas_11641781.htm#query=work&position=18&from_view=search&track=sph#position=18&query=work --}}
                             </div>
                         </div>
                     </div>

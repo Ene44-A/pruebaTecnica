@@ -63,7 +63,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                            <textarea class="form-control" name="description" style="max-height: 300px;" id="exampleFormControlTextarea1"
+                            <textarea class="form-control" name="description" style="max-height: 200px;" id="exampleFormControlTextarea1"
                                 rows="3" required></textarea>
                         </div>
                         <label for="exampleFormControlTextarea1" class="form-label">Pilar de proyecto</label>

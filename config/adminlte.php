@@ -329,11 +329,11 @@ return [
             'url'  => 'task',
             'icon' => 'fas fa-fw fa-book',
         ],
-        ['header' => 'Admin'],
         [
             'text' => 'Crear Proyecto',
             'url'  => 'project',
             'icon' => 'fas fa-fw fa-clipboard',
+            'can' => 'proyects.create',
         ],
         [
             'text' => 'Usuarios',
