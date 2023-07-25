@@ -330,15 +330,16 @@ return [
             'icon' => 'fas fa-fw fa-book',
         ],
         [
+            'text' => 'Usuarios',
+            'url'  => 'users',
+            'icon' => 'fas fa-fw fa-users',
+        ],
+        ['header' => 'Admin','can' => 'proyects.create',],
+        [
             'text' => 'Crear Proyecto',
             'url'  => 'project',
             'icon' => 'fas fa-fw fa-clipboard',
             'can' => 'proyects.create',
-        ],
-        [
-            'text' => 'Usuarios',
-            'url'  => 'users',
-            'icon' => 'fas fa-fw fa-users',
         ],
         // [
         //     'text'    => 'multilevel',

@@ -70,14 +70,21 @@
                         <div class="input-group">
                             <span class="input-group-text">Lider de proyecto</span>
                             <select class="form-select" name="leader_user" aria-label="Default select example">
-                                <option selected >Seleccionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option value="" selected>Seleccione un líder de proyecto</option>
+                                {{-- @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach --}}
+                                <option value="user1">user 1</option>
+                                <option value="user2">user 2</option>
+                                <option value="user3">user 3</option>
                             </select>
-                            {{-- <span class="input-group-text">Estado del proyecto</span> --}}
-                            <select class="form-select" name="status" aria-label="Default select example" style="display: none;" readonly>
-                                <option  value="pendiente" selected>Pendiente</option>
+                            <span class="input-group-text">Estado del proyecto</span>
+                            <select class="form-select" name="" aria-label="Default select example" disabled readonly>
+                                <option value="pendiente" selected>Pendiente</option>
+                            </select>
+                            <select class="form-select" name="status" aria-label="Default select example"
+                                style="display: none;" readonly>
+                                <option value="pendiente" selected>Pendiente</option>
                                 <option value="en_proceso">En Proceso</option>
                                 <option value="finalizada">Finalizada</option>
                             </select>
@@ -90,7 +97,7 @@
                         </div>
                         <div id="emailHelp" class="form-text">Por favor verificar todos los datos correctamentes</div>
                         <div class="col-12 mt-2">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
 
                         </div>
                     </form>

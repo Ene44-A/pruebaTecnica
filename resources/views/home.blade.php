@@ -43,7 +43,7 @@
                             <div class="card-body">
                                 <div class="row py-1">
                                     <div class="col-md-9">
-                                        <a href="{{ route('show-task', $project->id) }} "class="btn btn-primary">Ver
+                                        <a href="{{ route('show-task', $project->id) }}" class="btn btn-primary">Ver
                                             tareas</a>
                                     </div>
                                     @role('Admin')

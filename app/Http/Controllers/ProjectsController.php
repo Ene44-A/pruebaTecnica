@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\User;
 
 class ProjectsController extends Controller
 {
@@ -15,19 +16,32 @@ class ProjectsController extends Controller
      * edit para mostrar el formulario de edición
      */
 
-    //         $table->id();
-    //         $table->string('name');
-    //         $table->string('description');
-    //         $table->string('alias')->unique();
-    //         $table->string('status');
-    //         $table->string('leader_user');
-    //         $table->date('initial_date');
-    //         $table->date('final_date');
-    //         $table->timestamps();
+//mostrar los projectos del home
+    public function index()
+    {
+        $projects = Project::all();
 
+        return view('home', ['projects' => $projects]);
+    }
+
+    public function show($id)
+    {
+        $project = Project::find($id);
+        return view('admin.show', ['project' => $project]);
+    }
+
+    //traer id de liders
+    protected $fillable = ['leader_id'];
+
+    public function leader()
+    {
+        return $this->belongsTo(User::class, 'leader_id');
+    }
     //controlador de guardado de proyectos
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        $users = User::all(); // Obtener todos los usuarios
         //toma y validación de datos
         $request->validate([
             'name' => 'required|min:3',
@@ -53,21 +67,13 @@ class ProjectsController extends Controller
         $project->save();
 
         //redirecion para movimiento de datos
+        // return view('projects', ['users' => $users])->with('success', 'Proyecto registrado correctamente');
         return redirect()->route('projects')->with('success', 'Projecto registrado correctamente');
 
     }
 
-    public function index(){
-        $projects = Project::all();
-        return view('home', ['projects'=>$projects]);
-    }
-
-    public function show($id){
-        $project = Project::find($id);
-        return view('admin.show', ['project'=>$project]);
-    }
-
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $project = Project::find($id);
         $project->name = $request->name;
         $project->description = $request->description;
@@ -79,13 +85,16 @@ class ProjectsController extends Controller
         $project->final_date = $request->final_date;
         $project->save();
 
-        // return view('home', ['success'=>'Proyecto actualizado']);
+        $users = User::all(); // Obtener todos los usuarios
+
+        // return view('projects', ['users' => $users])->with('success', 'Proyecto actualizado');
         return redirect()->route('home')->with('success', 'Proyecto actualizado');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $project = Project::find($id);
-        $project ->delete();
+        $project->delete();
 
         return redirect()->route('projects')->with('success', 'Proyecto eliminado');
     }

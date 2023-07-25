@@ -19,21 +19,46 @@
                     <p>Descripción</p>
                     <p>{{ $project->description }}</p>
                 </div>
-                <a href="{{ route('create-task', $project->id) }}" class="btn btn-primary">Crear Nueva Tarea</a>
+                <a href="{{ route('create-task', $project->id) }}" class="btn btn-primary mb-3">Crear Nueva Tarea</a>
                 <ul>
-                    @foreach ($project->tasks as $task)
-                        <li>
+                    {{-- @foreach ($project->tasks as $task) --}}
+                        <li class="list-unstyled">
                             <div class="card">
 
                                 <div class="card-header">
-                                    {{ $task->task_name }}
+                                    *titulo de la tarea *
+                                    {{-- {{ $task->task_name }} --}}
                                 </div>
                                 <div class="card-body">
-                                    hola pepe
+                                    * info de la tarea *
                                 </div>
                             </div>
                         </li>
-                    @endforeach
+                        <li class="list-unstyled">
+                            <div class="card">
+
+                                <div class="card-header">
+                                    *titulo de la tarea *
+                                    {{-- {{ $task->task_name }} --}}
+                                </div>
+                                <div class="card-body">
+                                    * info de la tarea *
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-unstyled">
+                            <div class="card">
+
+                                <div class="card-header">
+                                    *titulo de la tarea *
+                                    {{-- {{ $task->task_name }} --}}
+                                </div>
+                                <div class="card-body">
+                                    * info de la tarea *
+                                </div>
+                            </div>
+                        </li>
+                    {{-- @endforeach --}}
                 </ul>
             </div>
         </div>
