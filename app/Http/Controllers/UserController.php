@@ -20,12 +20,12 @@ class UserController extends Controller
         return view('admin/users', compact('users'));
     }
 
-    public function usersCreate()
+    public function create()
     {
-        return view('admin/usersCreate');
+        return view('admin/create');
     }
 
-    public function usersStore(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -33,33 +33,34 @@ class UserController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        User::create($request->all());
+        User::create($request);
 
         return redirect()->route('admin/users')->with('success', 'Usuario creado correctamente.');
     }
 
-    public function usersEdit(User $user)
+    public function edit(User $user)
     {
         return view('admin/usersEdit', compact('user'));
     }
 
-    public function usersUpdate(Request $request, User $user)
+    public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:8',
+            'password' => 'nullable|min:8', // Add any password validation rules you need
         ]);
 
-        $user->usersUpdate($request->all());
+        $user->update($request->only('name', 'email', 'password'));
 
-        return redirect()->route('admin/users')->with('success', 'Usuario actualizado correctamente.');
+        return redirect()->route('edit', $user)->with('success', 'Usuario actualizado correctamente.');
     }
+
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('users')->with('success', 'Usuario eliminado correctamente.');
     }
 }

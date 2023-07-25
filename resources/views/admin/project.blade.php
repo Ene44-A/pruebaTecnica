@@ -71,15 +71,13 @@
                             <span class="input-group-text">Lider de proyecto</span>
                             <select class="form-select" name="leader_user" aria-label="Default select example">
                                 <option value="" selected>Seleccione un líder de proyecto</option>
-                                {{-- @foreach ($users as $user)
+                                @foreach ($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                @endforeach --}}
-                                <option value="user1">user 1</option>
-                                <option value="user2">user 2</option>
-                                <option value="user3">user 3</option>
+                                @endforeach
                             </select>
                             <span class="input-group-text">Estado del proyecto</span>
-                            <select class="form-select" name="" aria-label="Default select example" disabled readonly>
+                            <select class="form-select" name="" aria-label="Default select example" disabled
+                                readonly>
                                 <option value="pendiente" selected>Pendiente</option>
                             </select>
                             <select class="form-select" name="status" aria-label="Default select example"

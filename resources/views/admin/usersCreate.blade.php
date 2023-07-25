@@ -15,7 +15,7 @@
 
                 <div class="container">
                     <h1>Crear Usuario</h1>
-                    <form action="{{ route('usersStore') }}" method="POST">
+                    <form action="{{ route('store') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="name">Nombre:</label>

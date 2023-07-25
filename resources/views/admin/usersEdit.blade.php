@@ -12,12 +12,21 @@
                         {{ session('status') }}
                     </div>
                 @endif
-
                 <div class="container">
                     <h1>Editar Usuario</h1>
-                    <form action="{{ route('usersUpdate', $user->id) }}" method="POST">
+                    <form action="{{ route('update', $user->id) }}" method="POST">
                         @method('PATCH')
                         @csrf
+
+                        @if (session('success'))
+                            <h6 class="alert alert-success">{{ session('success') }}</h6>
+                        @endif
+
+                        {{-- mensaje de error --}}
+                        @error('name')
+                            <h6 class="alert alert-danger">{{ $message }}</h6>
+                        @enderror
+
                         <div class="form-group">
                             <label for="name">Nombre:</label>
                             <input type="text" name="name" id="name" class="form-control"value="{{ $user->name }}" required>

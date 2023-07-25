@@ -16,11 +16,13 @@ class ProjectsController extends Controller
      * edit para mostrar el formulario de edición
      */
 
-//mostrar los projectos del home
+    //mostrar los projectos del home
     public function index()
     {
-        $projects = Project::all();
+        // $projects = Project::all();
+        // return view('home', ['projects' => $projects]);
 
+        $projects = Project::with('leader')->get();
         return view('home', ['projects' => $projects]);
     }
 
@@ -41,7 +43,6 @@ class ProjectsController extends Controller
 
     public function store(Request $request)
     {
-        $users = User::all(); // Obtener todos los usuarios
         //toma y validación de datos
         $request->validate([
             'name' => 'required|min:3',

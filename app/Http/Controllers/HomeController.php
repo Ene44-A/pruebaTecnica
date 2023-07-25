@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,9 @@ class HomeController extends Controller
         return view('home');
     }
     public function project()
-    {
-        return view('admin/project');
-    }
+{
+    $users = User::all();
+
+    return view('admin.project', compact('users'));
+}
 }
